@@ -9,13 +9,17 @@ const express = require('express')();
 express.set('view engine', 'ejs');
 
 express.get('/', (req, resp) => {
-  resp.send("<html><body><p>Noticias de Tecnologia!</p></body></html>");
+  resp.render('home/index');
 }); 
 // Agora o express pode fazer uso do método render() do EJS
 // organizando melhor os arquivos em um padrão MVC
-express.get('/tecnologia', (req, resp) => {
-  resp.render("secao/tecnologia");
+express.get('/form-noticia', (req, resp) => {
+  resp.render("admin/form_add_noticia");
 }); 
+
+express.get('/noticias', (req, resp) => {
+  resp.render("noticias/noticias");
+});
 
 express.listen(4200, () => {
   console.log('Servidor rodando com Express');
