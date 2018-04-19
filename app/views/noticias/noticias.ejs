@@ -2,11 +2,21 @@
 	<html lang="pt-br">
 		<head>
 			<meta charset="utf-8"/>
-			<title>Notícias</title>
+			<title>Notï¿½cias</title>
 		</head>
 	<body>
 
-		<h1>Notícias</h1>
+		<div class="main">
+			<h1 style="text-align: center;">Notï¿½cias</h1>
+			<% for( let noticia of noticias){ %>
+				<div class="noticias">
+					<div class="title-noticia">
+						<h3><%= noticia.titulo %></h3>
+					</div>
+					<div class="noticia"><%= noticia.texto %></div>
+				</div>
+			<% } %>
+		</div>
 
 	</body>
 </html>
