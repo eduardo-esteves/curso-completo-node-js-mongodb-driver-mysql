@@ -30,6 +30,9 @@ express.set('views', './app/views');
  * onde estarão minhas rotas que quero que seja feito um auto-load
  * e em seguida informo para onde deverá ser usada com o into()
 */ 
-consign().include('./app/routes').into(express);
+consign()
+  .include('./app/routes')
+  .then('./config/mysqlConnection.js')
+  .into(express);
 
 module.exports = express;
