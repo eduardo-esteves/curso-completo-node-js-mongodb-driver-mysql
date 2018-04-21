@@ -7,9 +7,11 @@ requisição. */
 module.exports = express => {
   express.get('/noticia', (req, resp) => {
     const conexao = express.config.mysqlConnection();
+    // Importo o modulo que representa o model noticiasModel
+    const noticiasModel = express.app.models.noticiasModel;
     console.log(conexao);
     // Cria um query SQL e a executa
-    conexao.query('SELECT * FROM noticias WHERE id = 2', (error, result) => {
+    noticiasModel.getNoticia(conexao, (error, result) => {
       // resp.send(result);
       resp.render("noticias/noticia", {
         noticia: result

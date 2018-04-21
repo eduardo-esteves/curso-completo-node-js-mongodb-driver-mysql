@@ -7,14 +7,14 @@ requisição. */
 module.exports = express => {
   express.get('/noticias', (req, resp) => {
     const conexao = express.config.mysqlConnection();
-    console.log(conexao);
-    // Cria um query SQL e a executa
-    conexao.query('SELECT * FROM noticias', (error, result) => {
+    const noticiasModel = express.app.models.noticiasModel;
+    noticiasModel.getNoticias(conexao, (error, result) => {
       // resp.send(result);
       resp.render("noticias/noticias", {
         noticias: result
       });
-    });
+    })
+    console.log(conexao);
 
   });
 };

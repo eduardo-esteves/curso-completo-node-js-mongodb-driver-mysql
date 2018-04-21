@@ -33,6 +33,7 @@ express.set('views', './app/views');
 consign()
   .include('./app/routes')
   .then('./config/mysqlConnection.js')
+  .then('./app/models')
   .into(express);
 
 module.exports = express;
