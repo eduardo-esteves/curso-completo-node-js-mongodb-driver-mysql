@@ -11,7 +11,10 @@ const consign = require('consign');
  * de views será fornecida pelo módulo EJS sempre
  * que necessitamos configurar um módulo para trabalhar
  * em conjunto com o express, isso se dará pela propriedade set
- */
+*/
+// Feito a importação do modulo de midleware
+const bodyParser = require('body-parser');
+
 express.set('view engine', 'ejs');
 
 /**
@@ -25,6 +28,9 @@ express.set('view engine', 'ejs');
  * está sendo incluso.
  * */
 express.set('views', './app/views');
+
+express.use(bodyParser.urlencoded({extended:true}));
+
 /**
  * Obs que agora sim eu executo-a e incluo meu diretório
  * onde estarão minhas rotas que quero que seja feito um auto-load
