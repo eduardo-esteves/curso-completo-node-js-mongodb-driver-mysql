@@ -7,7 +7,14 @@ module.exports = express => {
   // Adicionado a rota da action do form add
   express.post('/noticias/salvar', (req, resp) => {
     //Quando enviamos dados o express popula a propriedade body do request
-    const noticias = req.body;
-    resp.send(noticias);
+    const noticia = req.body;
+    //resp.send(noticia);
+    const conexao = express.config.mysqlConnection();
+    const noticiasModel = express.app.models.noticiasModel;
+    noticiasModel.salvarNoticia(noticia, conexao, (error, result) => {
+      // resp.send(result);
+      resp.redirect("/noticias");
+    });
   });
+  
 }; 

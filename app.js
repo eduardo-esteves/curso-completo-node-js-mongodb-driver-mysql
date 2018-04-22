@@ -1,4 +1,4 @@
-const express = require('./config/server.js');
+const serverExpress = require('./config/server.js');
 
 /* 
 Importo a rota noticias que tem a lógica para encaminhar
@@ -17,6 +17,6 @@ objeto de dependência ao modulo.
 // const routeformNoticias = require('./app/routes/form-noticia.js');
 // routeformNoticias(express);
 
-express.listen(4200, () => {
+serverExpress.listen(4200, () => {
   console.log('Servidor rodando com Express');
 });
