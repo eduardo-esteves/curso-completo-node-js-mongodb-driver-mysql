@@ -15,6 +15,5 @@ module.exports = express => {
       // resp.send(result);
       resp.redirect("/noticias");
     });
-  });
-  
+  }); 
 }; 
