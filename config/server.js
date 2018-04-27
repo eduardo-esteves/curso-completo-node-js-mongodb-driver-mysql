@@ -14,6 +14,8 @@ const consign = require('consign');
 */
 // Feito a importação do modulo de midleware
 const bodyParser = require('body-parser');
+// Importa o modulo Express Validator como um Midleware
+const expressValidator = require('express-validator');
 
 express.set('view engine', 'ejs');
 
@@ -30,6 +32,7 @@ express.set('view engine', 'ejs');
 express.set('views', './app/views');
 
 express.use(bodyParser.urlencoded({extended:true}));
+express.use(expressValidator());
 
 /**
  * Obs que agora sim eu executo-a e incluo meu diretório
