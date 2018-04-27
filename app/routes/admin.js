@@ -10,8 +10,8 @@ module.exports = express => {
     const noticia = req.body;
     //resp.send(noticia);
     const conexao = express.config.mysqlConnection();
-    const noticiasModel = express.app.models.noticiasModel;
-    noticiasModel.salvarNoticia(noticia, conexao, (error, result) => {
+    const noticiasModel = new express.app.models.noticiasModel(conexao);
+    noticiasModel.salvarNoticia(noticia, (error, result) => {
       // resp.send(result);
       resp.redirect("/noticias");
     });

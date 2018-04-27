@@ -7,8 +7,8 @@ requisição. */
 module.exports = express => {
   express.get('/noticias', (req, resp) => {
     const conexao = express.config.mysqlConnection();
-    const noticiasModel = express.app.models.noticiasModel;
-    noticiasModel.getNoticias(conexao, (error, result) => {
+    const noticiasModel = new express.app.models.noticiasModel(conexao);
+    noticiasModel.getNoticias( (error, result) => {
       // resp.send(result);
       resp.render("noticias/noticias", {
         noticias: result
