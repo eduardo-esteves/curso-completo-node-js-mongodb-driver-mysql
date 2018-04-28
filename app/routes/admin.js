@@ -9,6 +9,19 @@ module.exports = express => {
     //Quando enviamos dados o express popula a propriedade body do request
     const noticia = req.body;
     //resp.send(noticia);
+    req.checkBody('titulo', 'Titulo é obrigatório').notEmpty();
+    req.checkBody('resumo', 'Resumo é obrigatório e deve ter entre 10 ou 100 caracteres').len(10,100);
+    req.checkBody('autor', 'Autor é obrigatório').notEmpty();
+    //req.checkBody('data_noticia', 'Data é obrigatório').notEmpty().isDate({format:'YYYY-MM-DD'});
+    req.checkBody('noticia', 'Noticia é obrigatório').notEmpty();
+    
+    const erros = req.validationErrors();
+
+    if(erros){
+      resp.render('admin/form_add_noticia');
+      return;
+    }
+
     const conexao = express.config.mysqlConnection();
     const noticiasModel = new express.app.models.noticiasModel(conexao);
     noticiasModel.salvarNoticia(noticia, (error, result) => {

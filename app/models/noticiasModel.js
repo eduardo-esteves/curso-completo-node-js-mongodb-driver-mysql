@@ -17,6 +17,7 @@ NoticiasModel.prototype.getNoticias = function ( callBack ){
  * da tabela se não, não será inserido e não retornará erro.
 */
 NoticiasModel.prototype.salvarNoticia = function( noticia, callBack ){
+  console.log(noticia);
   this._conexao.query('insert into noticias set ? ', noticia, callBack);
 }
 
