@@ -16,9 +16,11 @@ module.exports = express => {
     req.checkBody('noticia', 'Noticia é obrigatório').notEmpty();
     
     const erros = req.validationErrors();
-
+    console.log(erros);
     if(erros){
-      resp.render('admin/form_add_noticia');
+      resp.render('admin/form_add_noticia', {
+        errors: erros
+      });
       return;
     }
 
