@@ -2,7 +2,10 @@
 organizando melhor os arquivos em um padrão MVC */
 module.exports = express => {
   express.get('/form-noticia', (req, resp) => {
-    resp.render("admin/form_add_noticia");
+    resp.render("admin/form_add_noticia",{
+      errors: [],
+      noticia: {}
+    });
   });
   // Adicionado a rota da action do form add
   express.post('/noticias/salvar', (req, resp) => {
@@ -19,7 +22,8 @@ module.exports = express => {
     console.log(erros);
     if(erros){
       resp.render('admin/form_add_noticia', {
-        errors: erros
+        errors: erros,
+        noticia: noticia
       });
       return;
     }
